@@ -1,0 +1,206 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #ffffff;
+    --dark-card: #1e1e1e;
+    --accent: #6a0dad;
+    --text-main: #e0e0e0;
+    --text-dark: #333333;
+    --error-color: #ff4d4d;
+}
+
+body {
+    background-color: #6699CC; /* 指定の背景色 */
+    color: var(--text-main);
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.app-container { width: 100%; }
+
+.screen { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh;
+    animation: fadeIn 0.4s; 
+}
+
+.hidden { display: none !important; }
+
+/* --- ログイン画面 --- */
+.login-split-container {
+    display: flex;
+    width: 90%;
+    max-width: 900px;
+    height: 550px;
+    background: #008080; /* 指定のティール色 */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.login-image-side { flex: 1; position: relative; background: #000; overflow: hidden; }
+
+.login-bg-img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: crossfade 10s infinite;
+}
+.img2 { animation-delay: 5s; }
+
+@keyframes crossfade {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    45%  { opacity: 1; }
+    55%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.login-form-side { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px; }
+.login-inner-content { width: 100%; max-width: 280px; text-align: center; }
+.login-inner-content h2 { margin-bottom: 20px; color: white; letter-spacing: 2px; }
+
+#pass-input {
+    width: 100%; padding: 12px; margin-top: 5px; background: #2a2a2a;
+    border: 1px solid #444; border-radius: 10px; color: white; box-sizing: border-box;
+}
+
+.error { color: var(--error-color); font-size: 0.8rem; margin-top: 10px; }
+
+/* --- 紹介カード --- */
+.intro-card {
+    background: var(--card-bg);
+    color: var(--text-dark);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.image-frame { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent); }
+.profile-img { width: 100%; height: 100%; object-fit: cover; }
+.web-link { color: var(--accent); text-decoration: none; font-weight: bold; }
+.intro-text { margin: 20px 0; line-height: 1.6; }
+
+/* --- YouTubeフッター --- */
+.youtube-footer-link { text-decoration: none !important; margin-top: 30px; }
+.youtube-footer {
+    padding: 15px 25px; background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+}
+.youtube-footer:hover { transform: translateY(-3px); background: #ffffff; }
+.yt-content { display: flex; align-items: center; gap: 15px; }
+.yt-icon { width: 55px; height: 55px; border-radius: 8px; object-fit: cover; }
+.yt-info { display: flex; flex-direction: column; align-items: flex-start; }
+.yt-name { font-size: 1rem; font-weight: bold; color: #333; margin-bottom: 4px; }
+.yt-subscribe-visual {
+    display: flex; align-items: center; gap: 6px; background: #ff4d4d;
+    color: white; padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: bold;
+}
+.yt-logo-mini { width: 18px; filter: brightness(0) invert(1); }
+
+/* --- ストーリー選択画面 --- */
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin-top: 30px;
+}
+
+.story-card {
+    background: var(--dark-card);
+    padding: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.story-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.story-card h3 { margin: 0; color: white; }
+.subtitle { color: var(--accent); font-size: 0.9rem; }
+.chapter-count { color: #888; font-size: 0.8rem; margin-top: 10px; }
+
+/* --- リーダー画面（チャット・ナレーション） --- */
+.reader-container {
+    width: 100%;
+    max-width: 600px;
+    min-height: 80vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.reader-header { text-align: center; padding: 10px; color: var(--accent); font-weight: bold; }
+
+.fade-title {
+    font-size: 1.5rem; color: white; margin: 100px 0;
+    text-align: center; opacity: 0; transition: opacity 3s ease-in-out;
+}
+.title-visible { opacity: 1; }
+
+.log-display { width: 100%; padding-bottom: 120px; }
+
+.log-narration {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    border-left: 4px solid var(--accent);
+}
+
+.log-chat { margin: 20px 0; display: flex; flex-direction: column; }
+.log-chat.right { align-items: flex-end; }
+.log-chat.left { align-items: flex-start; }
+
+.log-name { font-size: 0.8rem; color: var(--accent); margin-bottom: 5px; font-weight: bold; }
+.log-text {
+    background: #2a2a2a;
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 85%;
+    color: white;
+    line-height: 1.6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.tap-hint {
+    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+    color: var(--accent); font-size: 0.8rem; letter-spacing: 2px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+/* --- ボタン類 --- */
+button {
+    background: var(--accent); color: white; border: none;
+    padding: 12px 28px; border-radius: 30px; cursor: pointer;
+    font-weight: bold; transition: 0.3s;
+}
+button:hover { opacity: 0.8; transform: scale(1.05); }
+
+.controls { position: fixed; bottom: 20px; width: 100%; display: flex; justify-content: center; }
+
+/* --- アニメーション --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .login-split-container { flex-direction: column; height: auto; min-height: 600px; }
+    .login-image-side { height: 250px; flex: none; }
+    .intro-card { width: 95%; }
+}
